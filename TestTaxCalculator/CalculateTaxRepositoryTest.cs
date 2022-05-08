@@ -3,8 +3,6 @@ using TaxCalculator.Controllers;
 using Moq;
 using TaxCalculator.Repository.IRepository;
 using System;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using TaxCalculator.Data;
 using TaxCalculator.Models;
 using System.Collections.Generic;
@@ -21,6 +19,7 @@ namespace TestTaxCalculator
         private readonly Mock<IEnumerable<ICalculateTaxByRule>> _mockRule;
         public CalculateTaxRepositoryTest()
         {
+            //
            _mockRule = new Mock<IEnumerable<ICalculateTaxByRule>>();
             var obj = new List<ICalculateTaxByRule>();
             obj.Add(new CalculateTaxByRuleOne());

@@ -29,8 +29,13 @@ namespace TaxCalculator.Repository
             float tax = 0;
             List<Municipality> municipalities = _db.municipalities.ToList();
 
+            //Get tax rule  for municipality
             TaxRuleEnum taxRule = municipalities.FirstOrDefault(a => a.MunicipalityName == municipality).TaxRule;
+
+            //Get all tax type
             List<TaxType> taxTypes = _db.taxTypes.Where(a => a.Municipality == municipality && (a.StartDate <= taxDate && a.EndDate >= taxDate)).ToList();
+            
+            //invoke respective tax rule class method
             foreach (ICalculateTaxByRule taxByRule in _taxByRules)
             {
                 if (taxByRule.Name != taxRule)

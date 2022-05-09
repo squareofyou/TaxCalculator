@@ -18,7 +18,12 @@ namespace TaxCalculator.Controllers
             _ctRepo = ctRepo;
             _logger = logger;
         }
-
+        /// <summary>
+        /// Get tax for municipality on a selected date
+        /// </summary>
+        /// <param name="municipality"></param>
+        /// <param name="taxDate"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult GetTax(string municipality,string taxDate)
         {
